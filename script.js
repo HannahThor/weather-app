@@ -1,13 +1,10 @@
-const apiKey = "980d4eb7360007329a040bec58ab7eb3";
-const apiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
-
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city) {
-  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  // new endpoint = '/.netlify/functions/weather' which needs to be called with queryparam city e.g. '/.netlify/functions/weather?city=London'
+  const response = await fetch(`/.netlify/functions/weather?city=${city}`);
 
   if (response.status == 404) {
     document.querySelector(".error").style.display = "block";
